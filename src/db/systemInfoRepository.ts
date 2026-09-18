@@ -43,6 +43,8 @@ export async function getSystemInfo(): Promise<SystemInfo | null> {
 }
 
 // Only the user-editable subset, all optional: a PATCH sends just what changed.
+// Pick means - Take the SystemInfo interface and keep only these four properties.
+// Partial means Make every property in this type optional.
 export type SystemInfoPatch = Partial<
   Pick<SystemInfo, "hostName" | "assetTag" | "location" | "adminContact">
 >;
