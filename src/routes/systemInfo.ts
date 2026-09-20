@@ -3,8 +3,9 @@ import {
   handleGetSystemInfo,
   handlePatchSystemInfo,
 } from "../controllers/systemInfo.js";
+import { asyncHandler } from "../middleware/asyncHandler.js";
 
 export const systemInfoRouter = Router();
 
-systemInfoRouter.get("/", handleGetSystemInfo);
-systemInfoRouter.patch("/", handlePatchSystemInfo);
+systemInfoRouter.get("/", asyncHandler(handleGetSystemInfo));
+systemInfoRouter.patch("/", asyncHandler(handlePatchSystemInfo));
