@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { systemInfoRouter } from "./routes/systemInfo.js";
+import { controllersRouter } from "./routes/controllers.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
@@ -15,6 +16,7 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.use("/api/system-info", systemInfoRouter);
+app.use("/api/controllers", controllersRouter);
 
 app.use((_req, res) => {
   res.status(404).json({ error: "Not found" });
