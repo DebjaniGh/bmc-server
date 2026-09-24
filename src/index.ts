@@ -5,6 +5,7 @@ import { systemInfoRouter } from "./routes/systemInfo.js";
 import { controllersRouter } from "./routes/controllers.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { enclosuresRouter } from "./routes/enclosures.js";
+import { physicalDisksRouter } from "./routes/physicalDisks.js";
 
 const app = express();
 const PORT = process.env.PORT ?? 4000;
@@ -19,6 +20,7 @@ app.get("/api/health", (_req, res) => {
 app.use("/api/system-info", systemInfoRouter);
 app.use("/api/controllers", controllersRouter);
 app.use("/api/enclosures", enclosuresRouter);
+app.use("/api/physical-disks", physicalDisksRouter);
 
 app.use((_req, res) => {
   res.status(404).json({ error: "Not found" });
