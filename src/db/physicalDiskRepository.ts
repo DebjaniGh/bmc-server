@@ -33,6 +33,7 @@ const SELECT_COLUMNS = `
 export interface PhysicalDiskFilter {
   controllerId?: string;
   enclosureId?: string;
+  mediaType?: string;
 }
 
 export async function getPhysicalDisks(
@@ -48,6 +49,10 @@ export async function getPhysicalDisks(
   if (filter.enclosureId) {
     values.push(filter.enclosureId);
     conditions.push(`enclosure_id = $${values.length}`);
+  }
+  if (filter.mediaType) {
+    values.push(filter.mediaType);
+    conditions.push(`media_type = $${values.length}`);
   }
 
   const whereClause =

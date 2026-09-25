@@ -4,6 +4,7 @@ export const physicalDiskQuerySchema = z
   .object({
     controllerId: z.string().uuid().optional(),
     enclosureId: z.string().uuid().optional(),
+    mediaType: z.string().optional(),
   })
   .refine((query) => !(query.controllerId && query.enclosureId), {
     message: "Provide either controllerId or enclosureId, not both",
